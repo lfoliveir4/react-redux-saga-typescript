@@ -3,7 +3,7 @@
 
 ## Branch Master: Class Components
 
-## Branch Hooks: Functional Componente
+## Branch Hooks: Functional Component
 
 In the project directory, you can run:
 
