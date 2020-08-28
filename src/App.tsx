@@ -5,10 +5,15 @@ import store from "./store";
 
 import RepositoriesList from "./components/RepositoryList";
 
+import GlobalStyles from "./styles/global";
+
 function App() {
   return (
     <Provider store={store}>
-      <RepositoriesList />
+      <>
+        <GlobalStyles />
+        <RepositoriesList />
+      </>
     </Provider>
   );
 }

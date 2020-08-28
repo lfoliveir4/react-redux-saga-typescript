@@ -7,7 +7,7 @@ interface OwnProps {
 }
 
 function RepositoryItem({ repository }: OwnProps) {
-  return <div>{repository.name}</div>;
+  return <li>{repository.name}</li>;
 }
 
 export default RepositoryItem;

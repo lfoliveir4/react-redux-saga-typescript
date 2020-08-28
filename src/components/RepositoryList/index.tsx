@@ -1,13 +1,14 @@
 import React from "react";
 
 import { bindActionCreators, Dispatch } from "redux";
-
 import { ApplicationState } from "../../store";
 import { Repository } from "../../store/modules/repositories/types";
 import * as RepositoriesActions from "../../store/modules/repositories/actions";
 import { connect } from "react-redux";
 
 import RepositoryItem from "../RepositoryItem";
+
+import * as Styles from "./styles";
 
 interface StateProps {
   repositories: Repository[];
@@ -19,26 +20,23 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-class RepositoryList extends React.Component<Props> {
-  componentDidMount() {
-    const { loadRequest } = this.props;
+const RepositoryList = (props: Props) => {
+  React.useEffect(() => {
+    props.loadRequest();
+  }, []);
 
-    loadRequest();
-  }
+  return (
+    <Styles.Container>
+      <p>Lista dos meus repos: lfoliveira</p>
 
-  render() {
-    const { repositories } = this.props;
-
-    return (
       <ul>
-        {repositories.map((repository) => (
-          // <li>{repository.name}</li>
+        {props.repositories?.map((repository) => (
           <RepositoryItem key={repository.id} repository={repository} />
         ))}
       </ul>
-    );
-  }
-}
+    </Styles.Container>
+  );
+};
 
 const mapStateToProps = (state: ApplicationState) => ({
   repositories: state.repositories.data,
